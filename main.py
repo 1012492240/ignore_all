@@ -44,7 +44,7 @@ class IgnoreAtAllPlugin(Star):
            
 
     @filter.permission_type(filter.PermissionType.ADMIN)
-    @filter.command("ignore_at_on")
+    @filter.command("ignore_open")
     async def ignore_at_on(self, event: AstrMessageEvent):
         """开启无视@功能"""
         self.ignore_all_at = True
@@ -52,7 +52,7 @@ class IgnoreAtAllPlugin(Star):
         yield event.plain_result("无视@功能已开启。")
 
     @filter.permission_type(filter.PermissionType.ADMIN)
-    @filter.command("ignore_at_off")
+    @filter.command("ignore_on")
     async def ignore_at_off(self, event: AstrMessageEvent):
         """关闭无视@功能"""
         self.ignore_all_at = False

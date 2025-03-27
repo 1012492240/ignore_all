@@ -1,4 +1,6 @@
-name: astrbot_plugin_ignore_VX
-desc: 默认无视@所有人
-help: ignore_at_on打开拦截，ignore_at_off关闭拦截
-
+name: astrbot_plugin_ignore_vx
+desc: 默认忽略@全体成员的消息，无视@所有人,适合微信群
+help: owo
+version: v1.0
+author: liljet
+repo: https://github.com/1012492240/ignore_all
