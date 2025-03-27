@@ -35,7 +35,6 @@ class IgnoreAtAllPlugin(Star):
 
     @filter.event_message_type(filter.EventMessageType.ALL)
     async def ignore_at_all(self, event: AstrMessageEvent):
-        logger.info(f"收到消息1234：{event.message_obj.raw_message["Content"]["string"]}")
         message_content = event.message_obj.raw_message["Content"]["string"]
         """监听消息，判断是否包含@全体成员或者@机器人"""
         if "@所有人" in message_content:
