@@ -35,8 +35,21 @@ class IgnoreAtAllPlugin(Star):
 
     @filter.event_message_type(filter.EventMessageType.ALL)
     async def ignore_at_all(self, event: AstrMessageEvent):
-        message_content = event.message_obj.raw_message["Content"]["string"]
-        """监听消息，判断是否包含@全体成员或者@机器人"""
+        logger.info(f"raw_message type: {type(event.message_obj.raw_message)}")
+        logger.info(f"raw_message content: {event.message_obj.raw_message}")
+        raw_message = event.message_obj.raw_message
+
+# 如果 raw_message 是 tuple，取出其中的字典部分
+        if isinstance(raw_message, tuple) and len(raw_message) > 2 and isinstance(raw_message[2], dict):
+            raw_message = raw_message[2]  # 取第三个元素（字典）
+
+        # 确保 raw_message 是字典
+        if isinstance(raw_message, dict):
+            message_content = raw_message.get("Content", {}).get("string", "")
+        else:
+            message_content = ""
+            
+
         if "@所有人" in message_content:
             event.stop_event()
             return
